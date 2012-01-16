@@ -7,7 +7,7 @@
     :license: BSD, see LICENSE for more details.
 """
 
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request
 app = Flask(__name__)
 
 @app.route("/login-form", methods=["GET", "POST"])
