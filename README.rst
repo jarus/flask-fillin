@@ -9,13 +9,13 @@ Installation
 ============
 The installation is thanks to the Python Package Index and `pip`_ really simple.
 
-.. code-block:: console
+::
 
    $ pip install Flask-fillin
 
 If you only can use `easy_install` than use
 
-.. code-block:: console
+::
 
    $ easy_install Flask-fillin
 
