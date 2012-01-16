@@ -30,7 +30,8 @@ setup(
     include_package_data=True,
     platforms='any',
     install_requires=[
-        'Flask'
+        'Flask',
+        'lxml'
     ],
     classifiers=[
         'Environment :: Web Environment',
