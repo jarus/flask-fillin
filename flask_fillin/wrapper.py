@@ -41,13 +41,16 @@ class FormWrapper(Response):
         if self._parsed_html is None:
             self._parsed_html = document_fromstring(self.data)
             
-        def _submit(self, client, **kargs):
+        def _submit(self, client, path=None, **kargs):
             data = dict(self.form_values())
             if kargs.has_key('data'):
                 data.update(kargs['data'])
                 del kargs['data']
-            return client.open(self.action, method=self.method, data=data,
-                               **kargs)
+            if path is None:
+                path = self.action
+            if not kargs.has_key('method'):
+                kargs['method'] = self.method
+            return client.open(path, data=data, **kargs)
         
         for form in self._parsed_html.forms:
             setattr(form, "submit", types.MethodType(_submit, form))
