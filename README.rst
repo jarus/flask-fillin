@@ -25,3 +25,19 @@ Flask-fillin requires to run some packages (they will be installed automatically
 
 * Flask
 * lxml
+
+Example Usage
+=============
+
+::
+
+   from flask.ext.fillin import FormWrapper
+
+   client = FlaskClient(flask_app, response_wrapper=FormWrapper)
+   response = client.get('/page_with_form')
+   
+   response.form.fields['username'] = 'my username'
+   response.form.fields['password'] = 'secret'
+   response.form.fields['remember'] = True
+   
+   response.form.submit(client)
