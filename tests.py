@@ -77,6 +77,13 @@ class fillinTest(unittest.TestCase):
         
         response = response.link("#link1").click(self.client)
         self.assertEquals(200, response.status_code)
+    
+    def test_form_without_action(self):
+        response = self.client.get('/form-without-action')
         
+        response = response.form.submit(self.client)
+        assert response.status_code == 200
+        assert "Submit success without action url" in response.data
+    
 if __name__ == '__main__':
     unittest.main()

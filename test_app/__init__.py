@@ -50,5 +50,12 @@ def checkbox_field_form():
 def link():
     return render_template('link.html')
 
+@app.route("/form-without-action", methods=["GET", "POST"])
+def from_without_action():
+    msg = None
+    if request.method == "POST":
+        msg = "Submit success without action url"
+    return render_template("form_without_action.html", msg=msg)
+
 if __name__ == "main":
     app.run()

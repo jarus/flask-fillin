@@ -41,6 +41,7 @@ class FormWrapper(Response):
     def html(self):
         if self._parsed_html is None:
             self._parsed_html = document_fromstring(self.data)
+            response = self
             
             # add click function to all links
             def _click(self, client, **kwargs):
@@ -58,6 +59,9 @@ class FormWrapper(Response):
                     del kargs['data']
                 if path is None:
                     path = self.action
+                    if path == "":
+                        print dir(response)
+                        print response.response
                 if not kargs.has_key('method'):
                     kargs['method'] = self.method
                 return client.open(path, data=data, **kargs)
