@@ -64,6 +64,19 @@ class fillinTest(unittest.TestCase):
         response.form.fields['checkbox_field'] = True
         response = response.form.submit(self.client)
         assert "Checkbox checked" in response.data
-
+        
+    def test_links_get(self):
+        response = self.client.get('/link')
+        
+        self.assertEquals(2, len(response.links()), '2 links are parsed from the source')
+        self.assertEquals('link1', response.link('#link1').text)
+        self.assertEquals('link2', response.link('.link').text)
+        
+    def test_link_click(self):
+        response = self.client.get('/link')
+        
+        response = response.link("#link1").click(self.client)
+        self.assertEquals(200, response.status_code)
+        
 if __name__ == '__main__':
     unittest.main()
