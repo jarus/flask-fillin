@@ -34,6 +34,7 @@ First form testing
 It is very simple now to test a received form by filling out.::
 
    from flask.ext.fillin import FormWrapper
+   from flask.testing import FlaskClient
 
    client = FlaskClient(flask_app, response_wrapper=FormWrapper)
    response = client.get('/page_with_form')
