@@ -34,6 +34,8 @@ Example Usage
    from flask.ext.fillin import FormWrapper
 
    client = FlaskClient(flask_app, response_wrapper=FormWrapper)
+   
+   # form submission
    response = client.get('/page_with_form')
    
    response.form.fields['username'] = 'my username'
@@ -41,3 +43,10 @@ Example Usage
    response.form.fields['remember'] = True
    
    response.form.submit(client)
+
+   # link navigation
+   response = client.get('/page_with_links')
+   response.link("#link-id").click(client)
+
+   # underlying parsed html
+   links = response.html.findall("a")
