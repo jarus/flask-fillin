@@ -46,5 +46,9 @@ def checkbox_field_form():
     
     return render_template("checkbox_field_form.html", msg=msg)
 
+@app.route('/link')
+def link():
+    return render_template('link.html')
+
 if __name__ == "main":
     app.run()
