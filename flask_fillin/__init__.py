@@ -9,4 +9,4 @@
     :license: BSD, see LICENSE for more details.
 """
 
-from wrapper import FormWrapper
+from .wrapper import FormWrapper
